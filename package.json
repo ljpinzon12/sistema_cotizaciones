@@ -1,0 +1,15 @@
+{
+  "name": "sistema_cotizaciones",
+  "version": "1.0.0",
+  "description": "proyecto 2 nodeJs mongo react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Esteban Chaparro Alejandro Cordoba",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
+  }
+}

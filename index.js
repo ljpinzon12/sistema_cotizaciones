@@ -128,15 +128,32 @@ function deleteProducto(callback, id) {
 
 }
 
+function putCotizacion(callback, cotizacion , cotizacionId){
+    
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
 
+        console.log("conectado a mongo");
 
+        var cotizaciones = db.collection("cotizaciones");
 
+        cotizaciones.collection.updateById(cotizacionId, cotizacion, function(err) { 
+            if (err) {
+                console.log(err);
+            }
+            
+        });
+        cotizaciones.find({}).toArray(function (err, cotizaciones) {
+            if (err) throw err;
 
+            console.log("hay " + cotizaciones.length + " cotizaciones");
 
+            callback(err, cotizaciones);
+        });
+        db.close();
+    });
 
-
-
-
+}
 
 var app = express();
 var router = express.Router();
@@ -275,13 +292,37 @@ app.post('/producto', function (req, res) {
 app.delete('/producto/:productId', function (req, res) {
     let productId = req.params.productId;
     
-   deleteProducto(function (err, productId ) {
+    
+   deleteProducto(function (err, productos ) {
         if (err) {
             res.json(["Error obteniendo productos"]);
             return;
         }
         res.json(productos);
-    }, producto);
+    }, productId);
+    
+});
+
+app.put('/cotizacion/:cotizacionId', function (req, res) {
+    let cotizacionId = req.params.cotizacionId;
+    
+    var cotizacion = {};   
+    cotizacion.email = req.body.email;
+    cotizacion.fecha = req.body.fecha;
+    cotizacion.nombreCliente = req.body.nombreCliente;
+    cotizacion.telefono = req.body.telefono;
+    cotizacion.estado = req.body.estado;
+    cotizacion.productos = req.body.productos;
+
+    
+    
+   putCotizacion(function (err, cotizaciones) {
+        if (err) {
+            res.json(["Error obteniendo productos"]);
+            return;
+        }
+        res.json(cotizaciones);
+    }, cotizacion , cotizacionId);
     
 });
 

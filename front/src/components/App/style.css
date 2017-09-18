@@ -36,6 +36,31 @@ body {
     left: -0.5%;
     width: 101%;
 }
+.shoppingCart {
+    margin-top: 25px;
+    position:fixed;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.3);
+    right: 5%;
+    transition: all 0.25s ease-out;
+    background-image: url(sC-Blue.png);
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.shoppingCart:hover {
+    background-color: #1b1f22;
+    cursor: pointer;
+    background-image: url(sC-White.png);
+}
+button:focus {outline:0;}
+.shoppingCart:active {
+    width: 45px;
+    height: 45px;
+}
 #products .product {
     display: inline-block;
     width: 49%;

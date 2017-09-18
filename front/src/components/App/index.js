@@ -6,8 +6,16 @@ import './style.css';
 
 class App extends Component {
     
-state = {products: []}
+  constructor(props) {
+    super(props);
+    this.state = {products: []};
 
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+    handleClick() {
+        console.log('hola');
+    }
  componentDidMount() {
    fetch('/products')
      .then(res => res.json())
@@ -21,6 +29,7 @@ state = {products: []}
  render() {
    return (
      <div id="products">
+        <button onClick={this.handleClick} className="shoppingCart"></button>
        {this.state.products.map(product =>
        
         <div key={product.id} className="product">
@@ -47,3 +56,4 @@ export default App;
 //         <div>
 //                <button onClick={this.handleSubmit}>Handle</button>
 //            </div>
+

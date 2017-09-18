@@ -20,6 +20,7 @@ class App extends Component {
         this.nameChange = this.nameChange.bind(this);
         this.emailChange = this.emailChange.bind(this);
         this.phoneChange = this.phoneChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleClick() {
         this.setState( { condition : !this.state.condition } ); 
@@ -60,7 +61,9 @@ class App extends Component {
                 products
             }));
         }
-           handleSubmit() {
+    handleSubmit() {
+            console.log('hola');
+            console.log(this.state.quote);
                 createQuote(this.state.quote);
             }
     render() {
@@ -69,7 +72,7 @@ class App extends Component {
             < div id = "products" > 
                 <div className={this.state.condition ? "quoteBG active" :"quoteBG"}>
                     <div className={this.state.condition ? "quote active" :"quote"}>
-                        <form onSubmit={this.handleSubmit}>
+                        <form>
                             <label>
                             Nombre:<input type="text" value={this.state.quote.nombre} onChange={this.nameChange} />
                             </label>
@@ -79,7 +82,7 @@ class App extends Component {
                             <label>
                             Telefono:<input type="number" value={this.state.quote.target} onChange={this.phoneChange} />
                             </label>
-                            <button type="submit">Enviar cotizaci&oacute;n</button>
+                            <button onClick={this.handleSubmit}>Enviar cotizaci&oacute;n</button>
                         </form>
                         {this.state.quote.fecha.toString()} 
 

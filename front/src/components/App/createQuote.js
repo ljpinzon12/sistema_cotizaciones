@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-fetch';
 
-export function createQuote() {
+export function createQuote(data) {
     return fetch('/cotizacion', {
         method: 'POST',
         mode: 'CORS',
-        body: JSON.stringify({'nombreCliente':'AACC', 'email':'aa@cc.com','fecha':'28/05/1015','telefono':'311525055'}),
+        body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
         }

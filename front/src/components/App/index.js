@@ -10,7 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             products: []
-            , quote: { email: '', telefono: '', 'fecha': new Date(), nombre: ''},
+            , quote: { email: '', telefono: '', 'fecha': new Date(), nombreCliente: ''},
             productos: [],
             condition: false
         };
@@ -35,7 +35,7 @@ class App extends Component {
     nameChange(event) {
     const target = event.target;
     const value = target.value;
-    this.state.quote.nombre = target.value;
+    this.state.quote.nombreCliente = target.value;
         this.setState(prevState => ({
              quote: this.state.quote
         }));
@@ -55,18 +55,21 @@ class App extends Component {
         this.setState(prevState => ({
              quote: this.state.quote
         }));
-        console.log(this.state.quote);
+        console.log('hola');
     }
     componentDidMount() {
             fetch('/products').then(res => res.json()).then(products => this.setState({
                 products
             }));
         }
-    handleSubmit() {
-                this.state.quote.productos = this.state.productos;
-                console.log(this.state.quote);
-                createQuote(this.state.quote);
+    handleSubmit(data) {
+                createQuote(data);
             }
+    concatanateProducts() { 
+                const quote = this.state.quote;
+                quote.productos = this.state.productos;
+                this.handleSubmit(quote);
+        }
     render() {
         return ( 
             
@@ -85,6 +88,7 @@ class App extends Component {
                             </label>
                             <button type="submit">Enviar cotizaci&oacute;n</button>
                         </form> 
+            <button onClick={this.concatanateProducts.bind(this)}>Enviar cotizaci&oacute;n</button>
 
                        { this.state.productos.map((objProd) => < div key = {objProd.urlImagen}
                         className = "review" > < img src = {objProd.urlImagen}/> < h2 > {objProd.nombre} < /h2>  < /div>)}

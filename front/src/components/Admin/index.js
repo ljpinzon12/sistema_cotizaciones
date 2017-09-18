@@ -9,6 +9,7 @@ export default class Admin extends Component {
         this.state = {
             quotes: []
         };
+
     }
     
         componentDidMount() {
@@ -18,19 +19,29 @@ export default class Admin extends Component {
         }
 
   render() {
-    const { className, ...props } = this.props;
-    return (
-      <div className={classnames('Admin', className)} {...props}>
-         {
-                this.state.quotes.map(product => < div key = {
-                        product.id
-                    }
-                    className = "product" > < h2 > {
-                        product.email
-                    } < /h2> < h3 > {
-                        product.fecha
-                    } < /h3> < h4 > {product.telefono} </h4>< /div>)
-            }
+    return (        
+      <div className="product"> {this.state.quotes.map(post =>
+    <div  key = { post.id }>
+      <h1>{post.nombre}</h1>
+      <h2>{post.email}</h2>
+      <h3>{post.telefono}</h3>
+      <h4>{post.fecha}</h4>
+      <ul>
+                
+            {
+                post.productos.map((subitem) => {
+                  return (
+                     <li>{subitem.nombre}</li>
+                  )
+                })
+               }
+        
+        
+      </ul>
+    </div>
+    )}
+        
+        
       </div>
     );
   }

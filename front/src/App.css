@@ -1,24 +1,74 @@
-.App {
-  text-align: center;
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 1.5% 0.5% 0 0.5%;
+    color: #282f3e;
+    background-color: #1b1f22;
+    overflow-x: hidden;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#home {
+    width: 100%;
+    height: 80vh;
+    background-color: #1b1f22;
+    overflow: hidden;
+    position: relative;
+    color: white;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+#home img {
+    width: 100%;
+    position: relative;
+    top: 50%
 }
-
-.App-intro {
-  font-size: large;
+#home h1 {
+  font-weight: 100;
+    font-size: 10em;
 }
+#home .title {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  transform: translate(-10%, -10%);
+}
+#products {
+    background-color: white;
+    text-align: center;
+    margin: 50px 0;
+    position: relative;
+    left: -0.5%;
+    width: 101%;
+}
+#products .product {
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+    margin: 50px 0;
+}
+#products .product img{
+    position: relative;
+    right: 15%;
+}
+#products .product:nth-child(2n) img {
+    position: relative;
+    left: 15%;
+}
+.product img {
+    width: 85%;
+}
+.product h2, h3, h4 {
+    margin: 2% 0;
+}
+.product h2 {
+    font-weight: 500;
+    font-size: 4em;
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+}
+.product h3 {
+    font-weight: 200;
+}   
+.product h4 {
+    font-weight: 400;
+}
+.product b {
+    font-weight: 400;
+
+    margin: 0 0.5% 0 2.5%;
 }

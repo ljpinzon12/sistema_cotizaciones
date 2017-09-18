@@ -106,16 +106,30 @@ app.use(function (req, res, next) {
 
 
 //now we can set the route path & initialize the API
-router.get('/', function (req, res) {
-    res.json({
-        message: 'API Initialized!'
-    });
-});
+//router.get('/', function (req, res) {
+//    res.json({
+//        message: 'API Initialized!'
+//    });
+//});
 //Use our router configuration when we call /api
 //app.use('/api', router);
 
 
+router.get('/users', function(req, res, next) {
+    // Comment out this line:
+ //res.send('respond with a resource');
 
+ // And insert something like this instead:
+ res.json([{
+     id: 1,
+     username: "samsepi0l"
+ }, {
+     id: 2,
+     username: "D0loresH4ze"
+ }]);
+});
+
+module.exports = router;
 
 // public es la ruta en la url
 //app.use("/public", express.static("./static"));

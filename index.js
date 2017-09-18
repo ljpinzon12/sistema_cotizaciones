@@ -1,6 +1,7 @@
 'use strict'
 
 var express = require('express');
+var path = require('path');
 
 var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
@@ -117,8 +118,9 @@ router.get('/', function (req, res) {
 
 
 // public es la ruta en la url
-app.use("/public", express.static("./static"));
+//app.use("/public", express.static("./static"));
 
+app.use(express.static(path.join(__dirname,'front/build/')));
 app.get('/', function (req, res) {
     res.send('hello world');
 });

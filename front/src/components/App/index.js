@@ -55,6 +55,7 @@ class App extends Component {
         this.setState(prevState => ({
              quote: this.state.quote
         }));
+        console.log(this.state.quote);
     }
     componentDidMount() {
             fetch('/products').then(res => res.json()).then(products => this.setState({
@@ -62,8 +63,8 @@ class App extends Component {
             }));
         }
     handleSubmit() {
-            console.log('hola');
-            console.log(this.state.quote);
+                this.state.quote.productos = this.state.productos;
+                console.log(this.state.quote);
                 createQuote(this.state.quote);
             }
     render() {
@@ -72,19 +73,18 @@ class App extends Component {
             < div id = "products" > 
                 <div className={this.state.condition ? "quoteBG active" :"quoteBG"}>
                     <div className={this.state.condition ? "quote active" :"quote"}>
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <label>
-                            Nombre:<input type="text" value={this.state.quote.nombre} onChange={this.nameChange} />
+                            Nombre:<input required type="text" value={this.state.quote.nombre} onChange={this.nameChange} />
                             </label>
                             <label>
-                            Email:<input type="email" value={this.state.quote.email} onChange={this.emailChange} />
+                            Email:<input required type="email" value={this.state.quote.email} onChange={this.emailChange} />
                             </label>
                             <label>
-                            Telefono:<input type="number" value={this.state.quote.target} onChange={this.phoneChange} />
+                            Telefono:<input required type="number" value={this.state.quote.telefono} onChange={this.phoneChange} />
                             </label>
-                            <button onClick={this.handleSubmit}>Enviar cotizaci&oacute;n</button>
-                        </form>
-                        {this.state.quote.fecha.toString()} 
+                            <button type="submit">Enviar cotizaci&oacute;n</button>
+                        </form> 
 
                        { this.state.productos.map((objProd) => < div key = {objProd.urlImagen}
                         className = "review" > < img src = {objProd.urlImagen}/> < h2 > {objProd.nombre} < /h2>  < /div>)}

@@ -29,7 +29,7 @@ export default class Admin extends Component {
                         product.email
                     } < /h2> < h3 > {
                         product.fecha
-                    } < /h3> < h4 > product.telefono </h4>< /div>)
+                    } < /h3> < h4 > {product.telefono} </h4>< /div>)
             }
       </div>
     );

@@ -77,6 +77,30 @@ function postCotizacion(callback, cotizacion) {
 
 }
 
+function postProducto(callback, producto) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+
+        console.log("conectado a mongo");
+
+        var productos = db.collection("productos");
+
+        productos.insertMany([producto], function (err, result) {
+            
+        });
+
+        productos.find({}).toArray(function (err, productos) {
+            if (err) throw err;
+
+            console.log("hay " + productos.length + " cotizaciones");
+
+            callback(err, productos);
+        });
+        db.close();
+    });
+
+}
+
 
 var app = express();
 var router = express.Router();
@@ -182,6 +206,32 @@ app.post('/cotizacion', function (req, res) {
         }
         res.json(cotizaciones);
     }, cotizacion);
+    
+});
+
+
+
+app.post('/producto', function (req, res) {
+    
+    console.log(req);
+
+    var producto = {}; 
+    producto.nombre = req.body.nombre;
+    producto.alto = req.body.alto;
+    producto.largo = req.body.largo;
+    producto.ancho = req.body.ancho;
+    producto.alto = req.body.alto;
+    producto.urlImagen = req.body.urlImagen;
+    producto.descripcion = req.body.descripcion;
+    
+
+   postProducto(function (err, productos) {
+        if (err) {
+            res.json(["Error obteniendo productos"]);
+            return;
+        }
+        res.json(productos);
+    }, producto);
     
 });
 

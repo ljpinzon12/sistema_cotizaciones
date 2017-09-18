@@ -37,6 +37,7 @@ body {
     width: 101%;
 }
 .shoppingCart {
+    z-index: 1000;
     margin-top: 25px;
     position:fixed;
     width: 50px;
@@ -61,19 +62,29 @@ button:focus {outline:0;}
     width: 45px;
     height: 45px;
 }
+.addProduct {
+    border-radius: 25px;
+    margin: 20px 0;
+    padding: 10px 15px;
+    background-color: white;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    transition: all 0.25s ease-out;
+    border:none;
+    font-weight: 500;
+}
+.addProduct:hover {
+    background-color: #1b1f22;
+    color: white;
+    cursor: pointer;
+}
+.addProduct:active {
+    box-shadow: none;
+}
 #products .product {
     display: inline-block;
     width: 49%;
     text-align: center;
     margin: 50px 0;
-}
-#products .product img{
-    position: relative;
-    right: 15%;
-}
-#products .product:nth-child(2n) img {
-    position: relative;
-    left: 15%;
 }
 .product img {
     width: 85%;
@@ -94,6 +105,41 @@ button:focus {outline:0;}
 }
 .product b {
     font-weight: 400;
-
     margin: 0 0.5% 0 2.5%;
+}
+.quote {
+    display: none;
+}
+.quoteBG.active {
+    display: inherit;
+    z-index: 5;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height:30vh;
+    width: 100%;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.8);
+}
+.quote {
+    display: none;
+}
+.quote.active {
+    display: inherit;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    overflow-y: scroll;
+}
+.addProduct.active {
+    background-image: url(x-Blue.png);
+}
+.addProduct.active:hover {
+    background-image: url(x-White.png);
 }

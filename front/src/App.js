@@ -9,7 +9,7 @@ class App extends Component {
 state = {products: []}
 
  componentDidMount() {
-   fetch('/productos')
+   fetch('/products')
      .then(res => res.json())
      .then(products => this.setState({ products }));
  }
@@ -20,15 +20,22 @@ state = {products: []}
 
  render() {
    return (
-     <div className="App">
-       <h1>Users</h1>
+     <div id="products">
        {this.state.products.map(product =>
-         <div key={product.id}>{product.nombre}</div>
+       
+        <div key={product.id} className="product">
+            <img src={product.urlImagen} />
+            <h2>{product.nombre}</h2>
+            <h3>{product.descripcion}</h3>
+            <h4>
+                <b>alto:</b>{product.alto}
+                <b>ancho:</b>{product.ancho}
+                <b>profundo:</b>{product.largo}
+            </h4>
+        </div>
        
        )}
-//         <div>
-//                <button onClick={this.handleSubmit}>Handle</button>
-//            </div>
+
 
      </div>
 
@@ -37,3 +44,6 @@ state = {products: []}
 }
 
 export default App;
+//         <div>
+//                <button onClick={this.handleSubmit}>Handle</button>
+//            </div>

@@ -102,6 +102,42 @@ function postProducto(callback, producto) {
 }
 
 
+function deleteProducto(callback, id) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+
+        console.log("conectado a mongo");
+
+        var productos = db.collection("productos");
+
+        productos.remove({_id: ObjectID(id)}, function(err, result) {
+            if (err) {
+                console.log(err);
+            }
+            console.log(result);
+        });
+        productos.find({}).toArray(function (err, productos) {
+            if (err) throw err;
+
+            console.log("hay " + productos.length + " cotizaciones");
+
+            callback(err, productos);
+        });
+        db.close();
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
 var app = express();
 var router = express.Router();
 
@@ -235,6 +271,19 @@ app.post('/producto', function (req, res) {
     
 });
 
+
+app.delete('/producto/:productId', function (req, res) {
+    let productId = req.params.productId;
+    
+   deleteProducto(function (err, productId ) {
+        if (err) {
+            res.json(["Error obteniendo productos"]);
+            return;
+        }
+        res.json(productos);
+    }, producto);
+    
+});
 
 
 

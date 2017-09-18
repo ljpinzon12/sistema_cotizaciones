@@ -9,6 +9,7 @@
   "author": "Juan Esteban Chaparro Alejandro Cordoba",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
     "react": "^15.6.1"

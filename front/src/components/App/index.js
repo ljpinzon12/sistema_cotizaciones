@@ -76,7 +76,7 @@ class App extends Component {
             < div id = "products" > 
                 <div className={this.state.condition ? "quoteBG active" :"quoteBG"}>
                     <div className={this.state.condition ? "quote active" :"quote"}>
-                        <form onSubmit={this.handleSubmit}>
+                        <form onSubmit={this.concatanateProducts}>
                             <label>
                             Nombre:<input required type="text" value={this.state.quote.nombre} onChange={this.nameChange} />
                             </label>
@@ -86,7 +86,7 @@ class App extends Component {
                             <label>
                             Telefono:<input required type="number" value={this.state.quote.telefono} onChange={this.phoneChange} />
                             </label>
-                            <button type="submit">Enviar cotizaci&oacute;n</button>
+//                            <button type="submit">Enviar cotizaci&oacute;n</button>
                         </form> 
             <button onClick={this.concatanateProducts.bind(this)}>Enviar cotizaci&oacute;n</button>
 

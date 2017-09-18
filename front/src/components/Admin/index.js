@@ -20,8 +20,8 @@ export default class Admin extends Component {
 
   render() {
     return (        
-      <div className="product"> {this.state.quotes.map(post =>
-    <div  key = { post.id }>
+      <div> {this.state.quotes.map(post =>
+    <div  key = { post.id } className="product">
       <h1>{post.nombre}</h1>
       <h2>{post.email}</h2>
       <h3>{post.telefono}</h3>

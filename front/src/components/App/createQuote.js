@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-export function createBlogPost() {
+export function createQuote() {
     return fetch('/cotizacion', {
         method: 'POST',
         mode: 'CORS',

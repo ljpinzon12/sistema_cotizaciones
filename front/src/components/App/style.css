@@ -137,9 +137,22 @@ button:focus {outline:0;}
     display: inline-block;
     overflow-y: scroll;
 }
-.addProduct.active {
+.shoppingCart.active {
     background-image: url(x-Blue.png);
 }
-.addProduct.active:hover {
+.shoppingCart.active:hover {
     background-image: url(x-White.png);
+}
+.review {
+    border-bottom: 1px solid;
+    border-color: white;
+}
+.review img {
+    width: 80px;
+    display: inline-block;
+    height: auto;
+}
+.review h2 {
+    font-weight: 500;
+    font-size: 1.2em;
 }

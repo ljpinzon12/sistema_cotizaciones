@@ -30,6 +30,7 @@ export default function register() {
     }
 
     window.addEventListener('load', () => {
+      //Lady Pinzon: Excelente uso de las arrow functions
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (!isLocalhost) {
@@ -50,6 +51,7 @@ function registerValidSW(swUrl) {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
+          //Lady Pinzon: Excelente uso de las arrow functions
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
               // At this point, the old content will have been purged and
@@ -76,6 +78,7 @@ function checkValidServiceWorker(swUrl) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
+    //Lady Pinzon: Excelente uso de las arrow functions
       // Ensure service worker exists, and that we really are getting a JS file.
       if (
         response.status === 404 ||
@@ -84,6 +87,7 @@ function checkValidServiceWorker(swUrl) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {
           registration.unregister().then(() => {
+            //Lady Pinzon: Excelente uso de las arrow functions
             window.location.reload();
           });
         });
@@ -93,6 +97,7 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
+    //Lady Pinzon: Excelente uso de las arrow functions
       console.log(
         'No internet connection found. App is running in offline mode.'
       );

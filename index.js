@@ -1,10 +1,12 @@
 'use strict'
-
+//Lady Pinzon: Hay varios pedazos de codigo comentados, se deberia hacer una limpieza completa del codigo que ya no se utilizo en el proyecto.
 var express = require('express');
+//Lady Pinzon: En ECMAScript 6 se deberia usar let o const, no var.
 var path = require('path');
 
 var MongoClient = require('mongodb').MongoClient;
 var bodyParser = require('body-parser');
+//Lady Pinzon: En ECMAScript 6 se deberia usar let o const, no var.
 
 //var url = 'mongodb://localhost:27017/mongo_proyecto2';
 var url = 'mongodb://web:123456Sha@ds141524.mlab.com:41524/shaserviciocotizaciones'
@@ -19,9 +21,10 @@ function getProductos(callback) {
         console.log("conectado a mongo");
 
         var products = db.collection("productos");
-
+//Lady Pinzon: En ECMAScript 6 se deberia usar let o const, no var.
 
         products.find({}).toArray(function (err, products) {
+            //Lady Pinzon: Se podria haber hecho con una arrow function.
             if (err) throw err;
 
             console.log("hay " + products.length + " products");
@@ -40,6 +43,7 @@ function getCotizaciones(callback) {
         console.log("conectado a mongo");
 
         var cotizaciones = db.collection("cotizaciones");
+        //Lady Pinzon: En ECMAScript 6 se deberia usar let o const, no var.
         cotizaciones.find({}).toArray(function (err, cotizaciones) {
             if (err) throw err;
 
@@ -66,6 +70,7 @@ function postCotizacion(callback, cotizacion) {
         });
 
         cotizaciones.find({}).toArray(function (err, cotizaciones) {
+            //Lady Pinzon: Se podria haber hecho una arrow function.
             if (err) throw err;
 
             console.log("hay " + cotizaciones.length + " cotizaciones");
@@ -104,6 +109,7 @@ function postProducto(callback, producto) {
 
 function deleteProducto(callback, id) {
     MongoClient.connect(url, function (err, db) {
+        //Lady Pinzon: Se podria haber hecho una arrow function.
         if (err) throw err;
 
         console.log("conectado a mongo");
@@ -193,6 +199,7 @@ app.use(function (req, res, next) {
 
 
 router.get('/users', function(req, res, next) {
+    //Lady Pinzon: no se usa el parametro next.
     // Comment out this line:
  //res.send('respond with a resource');
 

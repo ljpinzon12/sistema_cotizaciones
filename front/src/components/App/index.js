@@ -27,6 +27,7 @@ class App extends Component {
     }
     addProduct(prod) {
         var joined = this.state.productos.concat(prod);
+        //Lady Pinzon: con ECMAScript 6 se deberia usar const o let, no var
         this.setState(prevState => ({
             productos: joined
         }));
@@ -107,6 +108,7 @@ class App extends Component {
                     } < /h2> < h3 > {
                         product.descripcion
                     } < /h3> < h4 > < b > alto: < /b>{product.alto} < b > ancho: < /b>{product.ancho} < b > profundo: < /b>{product.largo} < /h4> < button className = "addProduct"
+                   //Lady Pinzon: no deberian haber estos espacios: < /, deberia ser </
                     onClick = {() => {this.addProduct(product)}} > Agregar a Cotizaci&oacute;n < /button> < /div>)
             } < /div>);
     }
